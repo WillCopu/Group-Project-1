@@ -21,16 +21,24 @@ $("#submit").on("click", function() {
 
   // Here we are building the URL we need to query the database for OpenWeatherMaps
   var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${userInput},USA${APIKey1}`;
-  var queryURL2 = `https://api.foursquare.com/v2/venues/explore?near=dallas&limit=10&section=trending&oauth_token=FO24HMJXX1L3QRLEWH5K1F4F2IUB22VTFX2MVRZWCJ2EZ31E&v=20180719` 
-  // We then created an AJAX call
+  var queryURL2 = `https://api.foursquare.com/v2/venues/explore?near=dallas&section=topPicks&oauth_token=FO24HMJXX1L3QRLEWH5K1F4F2IUB22VTFX2MVRZWCJ2EZ31E&v=20180719` 
+  // We then created an AJAX call for foursquare
+  $.ajax({
+    url: queryURL2,
+    method: "GET"
+  }).then(function(results) {
+    console.log(queryURL2);
+    console.log(results.response.groups[0].items[0].venue.name);
+  });
+
   $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function(response) {
     console.log(queryURL);
-    console.log(response);
-  });
-
+    console.log(response.list[0].dt_txt);
+    console.log(moment(response.list[0].dt_txt ).format('l'));
+  })
 
 
 
