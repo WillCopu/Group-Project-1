@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
         crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="reset.css">
+    
 
 
 </head>
@@ -20,7 +20,17 @@
     <div class="container">
         <div class="header">
             <div class="jumbotron mt-5">
-                <h1 class="text-center">Weather or Not</h1>
+                    <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Saved Cities
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                              <button class="dropdown-item" type="button">Action</button>
+                              <button class="dropdown-item" type="button">Another action</button>
+                              <button class="dropdown-item" type="button">Something else here</button>
+                            </div>
+                          </div>
+                <h1 class="text-center">Wea<i class="fa fa-plane"></i>her or Not</h1>
                 <p class="text-center">When deciding a quick getaway</p>
                 <div class="input-group mb-3">
 
@@ -29,6 +39,7 @@
                         <button id="submit" class="btn btn-outline-primary" type="button" id="button-addon2">Search</button>
                     </div>
                 </div>
+                <p id="slogan"class="text-center">See whats trending and get a five day forecast</p>
             </div>
         </div>
 
@@ -157,9 +168,20 @@
 
             </div>
         </div>
-
-
+        
+    <div  id="header" class="container text-center">
+        <div id="header" class="row text-center">
+         
+                <h1 id="city-4sq" class="text-center"></h1><i class="fa fa-heart" aria-label="add fav" style="font-size:48px;color:red;"></i>
+               
+           
+        </div>
+    </div>
+    
+       
+       
         <div id="topPicks" class="container">
+               
             
         </div>
 
