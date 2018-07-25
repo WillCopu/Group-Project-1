@@ -156,7 +156,6 @@ $("#submit").on("click", function() {
   
   });
 
-});//This is the end of our on-click function, everything is created inside of this
 
 
 
