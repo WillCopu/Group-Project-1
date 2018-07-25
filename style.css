@@ -21,3 +21,24 @@
 #slogan {
     text-align: center;
 }
+#clear:hover {
+    background: lightblue;
+    color: red;
+}
+.dropdown-item:hover {
+    cursor: pointer;
+    background-color: aquamarine;
+    font-size: 25px;
+}
+#weatherFore {
+    display: none;
+}
+
+.descCell {
+    height: 75px;
+}
+
+.description {
+    text-align: center;
+    display: block;
+}

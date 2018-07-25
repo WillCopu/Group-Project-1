@@ -10,17 +10,10 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
+let userInput;
+let city;
 
-$("#submit").on("click", function() {
-  var userInput = $("#cityInput").val().trim();
-  console.log(userInput);
-  //This clears out the search bar on-click
-  $("#cityInput").val("");
-  //This clears the previous foursquare results before the next search renders
-  $("#topPicks").empty();
-  //This will make our heart appear whenever the submit button is clicked
-  $(".fa-heart").css("display","unset");
-
+const runSearch = () => {
   // This is our API keys
   var APIKey1 = "&APPID=43c7b0d44b7655fca26cc7c25917a267";
   var APIKey2 = "PZHOYO5FFJN53C3NX0P3TMB35JTSTPYQOBLVYQ4AOF5QHUEP";
@@ -57,14 +50,6 @@ $("#submit").on("click", function() {
         $col.append($name,$location,$category).appendTo($row);
         $("#topPicks").append($row);
         
-        
-        
-        
-        
-       
-
-        
-        
         //fetching pictures for each venue with another ajax call inside an ajax call
         $.ajax({
           url: `https://api.foursquare.com/v2/venues/${venue.id}/photos?client_id=${clientID}&client_secret=${APIKey2}&v=20180721`,
@@ -82,41 +67,132 @@ $("#submit").on("click", function() {
             console.log($(`#venue${i}`));
         
           }
-          
         }); 
-      
-    }
-    
+    }  
   });
-  //This is our openWeatherMaps call
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-    console.log(queryURL);
-    console.log(response.list[0].dt_txt);
-    console.log(moment(response.list[0].dt_txt ).format('l'));
-    console.log(response);
-  })
- 
 
-  $(".fa-heart").on("click", function(){
-    
-    let city = userInput;
-    alert(userInput);
-    database.ref(`/city`).push({
-     city, 
-    }); 
+ //This is our openWeatherMaps call
+ $.ajax({
+  url: queryURL,
+  method: "GET"
+}).then(function(response) {
+  console.log(queryURL);
+  console.log(response.list[0].dt_txt);
+  console.log(moment(response.list[0].dt_txt).format("l"));
+  console.log(response);
+  //filling in the blanks of the different weather blocks
+
+  //dates
+  $("#date1").text(moment(response.list[0].dt_txt).format("l"));
+  $("#date2").text(moment(response.list[8].dt_txt).format("l"));
+  $("#date3").text(moment(response.list[16].dt_txt).format("l"));
+  $("#date4").text(moment(response.list[24].dt_txt).format("l"));
+  $("#date5").text(moment(response.list[32].dt_txt).format("l"));
+
+  //city
+  $(".city").text("Weather for: "+ response.city.name);
+
+  //weather icon
+  $("#weatherIcon1").html("<img src='http://openweathermap.org/img/w/"+response.list[0].weather[0].icon+".png'>");
+  $("#weatherIcon2").html("<img src='http://openweathermap.org/img/w/"+response.list[8].weather[0].icon+".png'>");
+  $("#weatherIcon3").html("<img src='http://openweathermap.org/img/w/"+response.list[16].weather[0].icon+".png'>");
+  $("#weatherIcon4").html("<img src='http://openweathermap.org/img/w/"+response.list[24].weather[0].icon+".png'>");
+  $("#weatherIcon5").html("<img src='http://openweathermap.org/img/w/"+response.list[32].weather[0].icon+".png'>");
+
+  //weather description
+  $("#weatherDescription1").text(response.list[0].weather[0].description);
+  $("#weatherDescription2").text(response.list[8].weather[0].description);
+  $("#weatherDescription3").text(response.list[16].weather[0].description);
+  $("#weatherDescription4").text(response.list[24].weather[0].description);
+  $("#weatherDescription5").text(response.list[32].weather[0].description);
+
+  //temperatures
+  $("#tempMax1").html(Math.round((((response.list[0].main.temp_max)-273.15)*1.8)+32)+"&deg;");
+  $("#tempMax2").html(Math.round((((response.list[8].main.temp_max)-273.15)*1.8)+32)+"&deg;");
+  $("#tempMax3").html(Math.round((((response.list[16].main.temp_max)-273.15)*1.8)+32)+"&deg;");
+  $("#tempMax4").html(Math.round((((response.list[24].main.temp_max)-273.15)*1.8)+32)+"&deg;");
+  $("#tempMax5").html(Math.round((((response.list[32].main.temp_max)-273.15)*1.8)+32)+"&deg;");
+
+  $(".timeNow").text(moment().format('LT'));
+  //humidity
+  $("#humidity1").html(response.list[0].main.humidity+"%");
+  $("#humidity2").html(response.list[8].main.humidity+"%");
+  $("#humidity3").html(response.list[16].main.humidity+"%");
+  $("#humidity4").html(response.list[24].main.humidity+"%");
+  $("#humidity5").html(response.list[32].main.humidity+"%");
+});
+//turning on the div to display the weather on click of the submit button
+$("#weatherFore").css("display", "block");
+
+//This is the end of our on-click function, everything is created inside of this
+}; // and this is the end of our function that we wrap everything in
+
+
+$("#submit").on("click", function() {
+  userInput = $("#cityInput").val().trim();
+  //city = $("#cityInput").val().trim();
+  console.log(userInput);
+  //This clears out the search bar on-click
+  $("#cityInput").val("");
+  //This clears the previous foursquare results before the next search renders
+  $("#topPicks").empty();
+  //This will make our heart appear whenever the submit button is clicked
+  $(".fa-heart").css("display","unset");
+  runSearch();
+});
+
+
+
   
-  });
+//runSearch();// This calls our function to run the search
 
-});//This is the end of our on-click function, everything is created inside of this
+$(".fa-heart").on("click", function(){
+  $('[data-toggle="popover"]').popover();
+  setTimeout(function(){$(`.popover-body`).empty(); }, 2000);
+
+  let city = userInput;
+  //alert(city);
+  database.ref(`/city`).push({
+   city, 
+  }); 
+
+});
+
+database.ref("/city").on("child_added", function(snapshot){
+  let sv = snapshot.val();
+  if (sv.city) {
+    let listItem =`<button  class="dropdown-item places" type="button">${sv.city}</button>`;
+    $(".dropdown-menu").prepend(listItem);
+  }
+  // else {
+  //   alert("You have not selected any favorites!");
+  // }
+// console.log(sv.city);
+});
+
+$("#clear").on("click", function(){
+ 
+  database.ref("/city").remove();
+  $(".dropdown-menu .places").remove();
+});
 
 
+$(".dropdown-menu").on("click", ".dropdown-item", function(){
+      choice = $(this).text();
+      userInput = choice;
+      console.log(userInput);
+      runSearch();
+});
 
-
-
-
+// $("#dropdownMenu2").on('click', function(){
+//   database.ref("/city").on("child_added", function(snapshot){
+//     let sv = snapshot.val();
+//     console.log(sv.city);
+//     if(sv === null) {
+//       alert('test');
+//     }
+//   });
+// });
 
 
 
