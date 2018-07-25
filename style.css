@@ -4,3 +4,11 @@
  
     
 }
+
+#weatherFore {
+    display: none;
+}
+
+.descCell {
+    height: 75px;
+}

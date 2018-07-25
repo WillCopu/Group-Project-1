@@ -91,17 +91,58 @@ $("#submit").on("click", function() {
     
   });
 
+  //ajax call for weather API
   $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function(response) {
     console.log(queryURL);
     console.log(response.list[0].dt_txt);
-    console.log(moment(response.list[0].dt_txt ).format('l'));
+    console.log(moment(response.list[0].dt_txt).format("l"));
     console.log(response);
-  })
+    //filling in the blanks of the different weather blocks
  
+    //dates
+    $("#date1").text(moment(response.list[0].dt_txt).format("l"));
+    $("#date2").text(moment(response.list[8].dt_txt).format("l"));
+    $("#date3").text(moment(response.list[16].dt_txt).format("l"));
+    $("#date4").text(moment(response.list[24].dt_txt).format("l"));
+    $("#date5").text(moment(response.list[32].dt_txt).format("l"));
 
+    //city
+    $(".city").text("Weather for: "+ response.city.name);
 
+    //weather icon
+    $("#weatherIcon1").html("<img src='http://openweathermap.org/img/w/"+response.list[0].weather[0].icon+".png'>");
+    $("#weatherIcon2").html("<img src='http://openweathermap.org/img/w/"+response.list[8].weather[0].icon+".png'>");
+    $("#weatherIcon3").html("<img src='http://openweathermap.org/img/w/"+response.list[16].weather[0].icon+".png'>");
+    $("#weatherIcon4").html("<img src='http://openweathermap.org/img/w/"+response.list[24].weather[0].icon+".png'>");
+    $("#weatherIcon5").html("<img src='http://openweathermap.org/img/w/"+response.list[32].weather[0].icon+".png'>");
 
+    //weather description
+    $("#weatherDescription1").text(response.list[0].weather[0].description);
+    $("#weatherDescription2").text(response.list[8].weather[0].description);
+    $("#weatherDescription3").text(response.list[16].weather[0].description);
+    $("#weatherDescription4").text(response.list[24].weather[0].description);
+    $("#weatherDescription5").text(response.list[32].weather[0].description);
+
+    //temperatures
+    $("#tempMax1").html(Math.round((((response.list[0].main.temp_max)-273.15)*1.8)+32)+"&deg;");
+    $("#tempMax2").html(Math.round((((response.list[8].main.temp_max)-273.15)*1.8)+32)+"&deg;");
+    $("#tempMax3").html(Math.round((((response.list[16].main.temp_max)-273.15)*1.8)+32)+"&deg;");
+    $("#tempMax4").html(Math.round((((response.list[24].main.temp_max)-273.15)*1.8)+32)+"&deg;");
+    $("#tempMax5").html(Math.round((((response.list[32].main.temp_max)-273.15)*1.8)+32)+"&deg;");
+
+    $(".timeNow").text(moment().format('LT'));
+    //humidity
+    $("#humidity1").html(response.list[0].main.humidity+"%");
+    $("#humidity2").html(response.list[8].main.humidity+"%");
+    $("#humidity3").html(response.list[16].main.humidity+"%");
+    $("#humidity4").html(response.list[24].main.humidity+"%");
+    $("#humidity5").html(response.list[32].main.humidity+"%");
+
+  });
+
+  //turning on the div to display the weather on click of the submit button
+  $("#weatherFore").css("display", "block");
 });
