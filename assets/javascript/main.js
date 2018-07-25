@@ -9,20 +9,22 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var database = firebase.database();
+
 $("#submit").on("click", function() {
-  var userInput = $("#cityInput")
-    .val()
-    .trim();
+  var userInput = $("#cityInput").val().trim();
   console.log(userInput);
   //This clears out the search bar on-click
   $("#cityInput").val("");
   //This clears the previous foursquare results before the next search renders
   $("#topPicks").empty();
+  //This will make our heart appear whenever the submit button is clicked
+  $(".fa-heart").css("display","unset");
 
   // This is our API keys
   var APIKey1 = "&APPID=43c7b0d44b7655fca26cc7c25917a267";
-  var APIKey2 = "EG1HKMAR4NVCHEYDK1UE4OGRFJ35FJCJDKSQZMN0AKJ32S1G";
-  var clientID = "AMBFJBBKSIVAOZFW020NJ2KTVH153HVJYIKKYJISKNSEKAN5";
+  var APIKey2 = "PZHOYO5FFJN53C3NX0P3TMB35JTSTPYQOBLVYQ4AOF5QHUEP";
+  var clientID = "NEUHRRZ0QLEXZHYYO1BQ40TCAYG42QWPUK2YLV3KE4AR4QGI";
 
   // Here we are building the URL we need to query the database for OpenWeatherMaps
   var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${userInput},USA${APIKey1}`;
@@ -98,7 +100,15 @@ $("#submit").on("click", function() {
   })
  
 
-
+  $(".fa-heart").on("click", function(){
+    
+    let city = userInput;
+    alert(userInput);
+    database.ref(`/city`).push({
+     city, 
+    }); 
+  
+  });
 
 });//This is the end of our on-click function, everything is created inside of this
 
@@ -108,39 +118,7 @@ $("#submit").on("click", function() {
 
 
 
-//     //fetching pictures for each venue with another ajax call inside an ajax call
-//     $.ajax({
-//       url: `https://api.foursquare.com/v2/venues/${venue.id}/photos?client_id=${clientID}&client_secret=${APIKey2}&v=20180721`,
-//       method: "GET"
-//     }).then(function(picRes) {
-//       console.log("results", picRes);
-//       let photo = picRes.response.photos.items[0];
-//       let  $pic = $("<div>").html(`<img src="${photo.prefix}200x200${photo.suffix}">`);
-//       //This will append our photos to the div col with the id attr of venue{i}
-//       // we had to give each class an id to append things in the right order because the second ajax call for the photos
-//       // does not happen at the same time as the first ajax call for the venue information
-//       $(`#venue${i}`).append($pic);
-//       console.log($(`#venue${i}`));
-//     }); 
-// }
-
-// });
-// //This is our openWeatherMaps call
-// $.ajax({
-// url: queryURL,
-// method: "GET"
-// }).then(function(response) {
-// console.log(queryURL);
-// console.log(response.list[0].dt_txt);
-// console.log(moment(response.list[0].dt_txt ).format('l'));
-// console.log(response);
-// })
 
 
 
 
-// });//This is the end of our on-click function, everything is created inside of this
-
-
-
-// 1 CommentCollapse 

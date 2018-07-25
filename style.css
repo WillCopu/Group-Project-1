@@ -8,3 +8,16 @@
 #city-4sq {
     font-size: 40px;
 }
+
+.fa-heart{
+    display: inline-block;
+    cursor: pointer;
+    display: none;
+}
+#header {
+    margin: auto;
+    display: inline-flex;
+}
+#slogan {
+    text-align: center;
+}
