@@ -25,6 +25,9 @@
     background: lightblue;
     color: red;
 }
+.dropdown-item{
+    text-transform: capitalize;
+}
 .dropdown-item:hover {
     cursor: pointer;
     background-color: aquamarine;
@@ -41,4 +44,37 @@
 .description {
     text-align: center;
     display: block;
+}
+
+.box {
+    height: 400px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+}
+
+.card {
+    display: inline-block;
+    height: 100%;
+    width: 300px;
+}
+
+#map {
+    position: unset !important;
+    overflow: unset !important;
+    display: none;
+    height: fit-content;
+    width: fit-content;
+   
+    
+}
+
+#mapView {
+    cursor: pointer;
+}
+
+#close {
+    display: none;
+    position: absolute;
 }

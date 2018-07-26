@@ -18,6 +18,18 @@
 
 <body>
     <div class="container">
+        <div class="row">
+            
+                <div id="map">
+                        
+                </div>
+
+                <button id="close" type="button" class="btn btn-danger">Close Map</button>
+            
+        </div>
+    </div>
+        
+    <div id="jumbo" class="container">
         <div class="header">
             <div class="jumbotron mt-5">
                     <div class="dropdown">
@@ -43,9 +55,9 @@
         </div>
 
 
-        <div class="container" id="weatherFore">
-                <div class="row">
-                    <div class="card" style="width: 20%">
+        <div class="container box" id="weatherFore">
+             
+                    <div class="card" style="width: 300px">
                         <div class="card-header" id="date1"></div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
@@ -67,7 +79,7 @@
                         </ul>
                     </div>
     
-                    <div class="card" style="width: 20%">
+                    <div class="card" style="width: 300px">
                         <div class="card-header" id="date2"></div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
@@ -89,7 +101,7 @@
                         </ul>
                     </div>
     
-                    <div class="card" style="width: 20%">
+                    <div class="card" style="width: 300px">
                         <div class="card-header" id="date3"></div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
@@ -111,7 +123,7 @@
                         </ul>
                     </div>
     
-                    <div class="card" style="width: 20%">
+                    <div class="card" style="width: 300px">
                         <div class="card-header" id="date4"></div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
@@ -133,7 +145,7 @@
                         </ul>
                     </div>
     
-                    <div class="card" style="width: 20%">
+                    <div class="card" style="width: 300px">
                         <div class="card-header" id="date5"></div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
@@ -155,22 +167,25 @@
                         </ul>
                     </div>
     
-                </div>
-            </div>
+                
+        </div>
     
         
     <div  id="header" class="container text-center">
         <div id="header" class="row text-center">
          
+           
                 <h1 id="city-4sq" class="text-center"></h1><i data-toggle="popover" data-content="This city has been saved" class="fa fa-heart" aria-label="add fav" style="font-size:48px;color:red;"></i>
                
            
         </div>
     </div>
     
+    
        
        
         <div id="topPicks" class="container">
+                <!-- <i id="mapView" class="fa fa-map-signs" aria-hidden="true">Map View</i> -->
                
             
         </div>
@@ -192,8 +207,10 @@
         crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script src="./assets/javascript/main.js"></script>
-
+    <script src="assets/javascript/main.js"></script>
+   
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFUrGNjQUHEI5MHH3XpNLCxWbWhII9_PM&v=3.32&callback=initMap"></script>
 </body>
 
 </html>
