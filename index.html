@@ -18,6 +18,18 @@
 
 <body>
     <div class="container">
+        <div class="row">
+            
+                <div id="map">
+                        
+                </div>
+
+                <button id="close" type="button" class="btn btn-danger">Close Map</button>
+            
+        </div>
+    </div>
+        
+    <div id="jumbo" class="container">
         <div class="header">
             <div class="jumbotron mt-5">
                     <div class="dropdown">
@@ -25,9 +37,8 @@
                               Saved Cities
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                              <button class="dropdown-item" type="button">Action</button>
-                              <button class="dropdown-item" type="button">Another action</button>
-                              <button class="dropdown-item" type="button">Something else here</button>
+                             
+                                <button id="clear" class="dropdown-item" type="button">Clear Favorites</button>
                             </div>
                           </div>
                 <h1 class="text-center">Wea<i class="fa fa-plane"></i>her or Not</h1>
@@ -44,128 +55,139 @@
         </div>
 
 
-        <div class="container" id="weatherFore">
-            <div class="row">
-                <div class="card" style="width: 20%">
-                    <div class="card-header" id="date1"></div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <span class="city"> </span>
-                        </li>
-                        <li class="list-group-item">
-                            <span id="weatherIcon1"></span>
-                        </li>
-                        <li class="list-group-item descCell">Description:
-                            <span id="weatherDescription1"></span>
-                        </li>
-                        <li class="list-group-item temp">Temperature at <span class="timeNow"></span>:
-                            <span id="tempMax1"></span>
-                        </li>
-                        <li class="list-group-item">Humidity:
-                            <span id="humidity1"></span>
-                        </li>
-                    </ul>
-                </div>
 
-                <div class="card" style="width: 20%">
-                    <div class="card-header" id="date2"></div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <span class="city"> </span>
-                        </li>
-                        <li class="list-group-item">
-                            <span id="weatherIcon2"></span>
-                        </li>
-                        <li class="list-group-item descCell">Description:
-                            <span id="weatherDescription2"></span>
-                        </li>
-                        <li class="list-group-item">Temperature at <span class="timeNow"></span>:
-                            <span id="tempMax2"></span>
-                        </li>
-                        <li class="list-group-item">Humidity:
-                            <span id="humidity2"></span>
-                        </li>
-                    </ul>
-                </div>
+        <div class="container box" id="weatherFore">
+             
+                    <div class="card" style="width: 300px">
+                        <div class="card-header" id="date1"></div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <span class="city"> </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span id="weatherIcon1"></span>
+                            </li>
+                            <li class="list-group-item descCell">Description:
+                                <br>
+                                <span class="description text-center"id="weatherDescription1"></span>
+                            </li>
+                            <li class="list-group-item temp">Temperature at <span class="timeNow"></span>:
+                                <span id="tempMax1"></span>
+                            </li>
+                            <li class="list-group-item">Humidity:
+                                <span id="humidity1"></span>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <div class="card" style="width: 300px">
+                        <div class="card-header" id="date2"></div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <span class="city"> </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span id="weatherIcon2"></span>
+                            </li>
+                            <li class="list-group-item descCell">Description:
+                                <br>
+                                <span class="description"id="weatherDescription2"></span>
+                            </li>
+                            <li class="list-group-item">Temperature at <span class="timeNow"></span>:
+                                <span id="tempMax2"></span>
+                            </li>
+                            <li class="list-group-item">Humidity:
+                                <span id="humidity2"></span>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <div class="card" style="width: 300px">
+                        <div class="card-header" id="date3"></div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <span class="city"> </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span id="weatherIcon3"></span>
+                            </li>
+                            <li class="list-group-item descCell">Description:
+                                <br>
+                                <span class="description" id="weatherDescription3"></span>
+                            </li>
+                            <li class="list-group-item">Temperature at <span class="timeNow"></span>:
+                                <span id="tempMax3"></span>
+                            </li>
+                            <li class="list-group-item">Humidity:
+                                <span id="humidity3"></span>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <div class="card" style="width: 300px">
+                        <div class="card-header" id="date4"></div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <span class="city"> </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span id="weatherIcon4"></span>
+                            </li>
+                            <li class="list-group-item descCell">Description:
+                                <br>
+                                <span class="description" id="weatherDescription4"></span>
+                            </li>
+                            <li class="list-group-item">Temperature at <span class="timeNow"></span>:
+                                <span id="tempMax4"></span>
+                            </li>
+                            <li class="list-group-item">Humidity:
+                                <span id="humidity4"></span>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <div class="card" style="width: 300px">
+                        <div class="card-header" id="date5"></div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <span class="city"> </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span id="weatherIcon5"></span>
+                            </li>
+                            <li class="list-group-item descCell">Description:
+                                <br>
+                                <span  class="description" id="weatherDescription5"></span>
+                            </li>
+                            <li class="list-group-item">Temperature at <span class="timeNow"></span>:
+                                <span id="tempMax5"></span>
+                            </li>
+                            <li class="list-group-item">Humidity:
+                                <span id="humidity5"></span>
+                            </li>
+                        </ul>
+                    </div>
+    
+                
 
-                <div class="card" style="width: 20%">
-                    <div class="card-header" id="date3"></div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <span class="city"> </span>
-                        </li>
-                        <li class="list-group-item">
-                            <span id="weatherIcon3"></span>
-                        </li>
-                        <li class="list-group-item descCell">Description:
-                            <span id="weatherDescription3"></span>
-                        </li>
-                        <li class="list-group-item">Temperature at <span class="timeNow"></span>:
-                            <span id="tempMax3"></span>
-                        </li>
-                        <li class="list-group-item">Humidity:
-                            <span id="humidity3"></span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="card" style="width: 20%">
-                    <div class="card-header" id="date4"></div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <span class="city"> </span>
-                        </li>
-                        <li class="list-group-item">
-                            <span id="weatherIcon4"></span>
-                        </li>
-                        <li class="list-group-item descCell">Description:
-                            <span id="weatherDescription4"></span>
-                        </li>
-                        <li class="list-group-item">Temperature at <span class="timeNow"></span>:
-                            <span id="tempMax4"></span>
-                        </li>
-                        <li class="list-group-item">Humidity:
-                            <span id="humidity4"></span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="card" style="width: 20%">
-                    <div class="card-header" id="date5"></div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <span class="city"> </span>
-                        </li>
-                        <li class="list-group-item">
-                            <span id="weatherIcon5"></span>
-                        </li>
-                        <li class="list-group-item descCell">Description:
-                            <span id="weatherDescription5"></span>
-                        </li>
-                        <li class="list-group-item">Temperature at <span class="timeNow"></span>:
-                            <span id="tempMax5"></span>
-                        </li>
-                        <li class="list-group-item">Humidity:
-                            <span id="humidity5"></span>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
         </div>
+    
         
     <div  id="header" class="container text-center">
         <div id="header" class="row text-center">
          
-                <h1 id="city-4sq" class="text-center"></h1><i class="fa fa-heart" aria-label="add fav" style="font-size:48px;color:red;"></i>
+           
+                <h1 id="city-4sq" class="text-center"></h1><i data-toggle="popover" data-content="This city has been saved" class="fa fa-heart" aria-label="add fav" style="font-size:48px;color:red;"></i>
                
            
         </div>
     </div>
     
+    
        
        
         <div id="topPicks" class="container">
+                <!-- <i id="mapView" class="fa fa-map-signs" aria-hidden="true">Map View</i> -->
                
             
         </div>
@@ -187,8 +209,10 @@
         crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script src="./assets/javascript/main.js"></script>
-
+    <script src="assets/javascript/main.js"></script>
+   
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFUrGNjQUHEI5MHH3XpNLCxWbWhII9_PM&v=3.32&callback=initMap"></script>
 </body>
 
 </html>

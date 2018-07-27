@@ -32,3 +32,60 @@
 #slogan {
     text-align: center;
 }
+#clear:hover {
+    background: lightblue;
+    color: red;
+}
+.dropdown-item{
+    text-transform: capitalize;
+}
+.dropdown-item:hover {
+    cursor: pointer;
+    background-color: aquamarine;
+    font-size: 25px;
+}
+#weatherFore {
+    display: none;
+}
+
+.descCell {
+    height: 75px;
+}
+
+.description {
+    text-align: center;
+    display: block;
+}
+
+.box {
+    height: 400px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+}
+
+.card {
+    display: inline-block;
+    height: 100%;
+    width: 300px;
+}
+
+#map {
+    position: unset !important;
+    overflow: unset !important;
+    display: none;
+    height: fit-content;
+    width: fit-content;
+   
+    
+}
+
+#mapView {
+    cursor: pointer;
+}
+
+#close {
+    display: none;
+    position: absolute;
+}
