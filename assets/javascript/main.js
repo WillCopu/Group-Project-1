@@ -114,10 +114,12 @@ const runSearch = () => {
             infowindow.open(map, venueMarker);
           });
         }); 
+
       }  
     });
 
   //This is our openWeatherMaps call
+
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -127,6 +129,8 @@ const runSearch = () => {
     console.log(moment(response.list[0].dt_txt).format("l"));
     console.log(response);
     //filling in the blanks of the different weather blocks
+
+
 
     //dates
     $("#date1").text(moment(response.list[0].dt_txt).format("l"));
@@ -166,6 +170,7 @@ const runSearch = () => {
     $("#humidity3").html(response.list[16].main.humidity+"%");
     $("#humidity4").html(response.list[24].main.humidity+"%");
     $("#humidity5").html(response.list[32].main.humidity+"%");
+
   });
   //turning on the div to display the weather on click of the submit button
   $("#weatherFore").css("display", "block");
