@@ -178,6 +178,23 @@ const runSearch = () => {
 
 }; // and this is the end of our runSearch function for our ajax calls that we wrap everything in
 
+//This just runs everything with the press of enter......duplicate of on-click
+$(document).keypress(function(e) {
+  if(e.which == 13) {
+    userInput = $("#cityInput").val().trim(); 
+    console.log(userInput);
+    //This clears out the search bar on-click
+    $("#cityInput").val("");
+    //This clears the previous foursquare results before the next search renders
+    $("#topPicks").empty();
+    //This will make our heart appear whenever the submit button is clicked
+    $(".fa-heart").css("display","unset");
+    //This is where we call the API/AJAX function to run
+    runSearch();  
+    planeGoFlyFly();
+  }
+});
+
 //When clicking submit this will take our global userInput variable and plug it into our ajax function
 $("#submit").on("click", function() {
   userInput = $("#cityInput").val().trim(); 
@@ -190,6 +207,7 @@ $("#submit").on("click", function() {
   $(".fa-heart").css("display","unset");
   //This is where we call the API/AJAX function to run
   runSearch();
+  planeGoFlyFly();
 });
 //This calls the popover on the heart icon on click
 $('[data-toggle="popover"]').popover();
@@ -240,7 +258,12 @@ $("#close").on("click", function(){
   $("#close").fadeOut("3000");
 });
 
-
+const planeGoFlyFly = () => {
+  $(".fa-plane").css("position","relative");
+  $(".fa-plane").animate({position: '+=250px', left: '+=150px', bottom: '+=300px'}, 3000, function(){
+    $(this).css({position: '0', left: '0', bottom: '0'})
+  }); 
+};
 
 
 
