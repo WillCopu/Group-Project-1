@@ -15,6 +15,13 @@ let city;
 let map;
 let cities = [];
 
+const planeGoFlyFly = () => {
+  $(".fa-plane").css("position","relative");
+  $(".fa-plane").animate({position: '+=250px', left: '+=150px', bottom: '+=300px'}, 3000, function(){
+    $(this).css({position: '0', left: '0', bottom: '0'})
+  }); 
+};
+
 // This is the function that intializes are googlemaps
 function initMap() {
   // The location of Uluru
@@ -30,8 +37,8 @@ function initMap() {
 const runSearch = () => {
     // This is our API keys
     var APIKey1 = "&APPID=43c7b0d44b7655fca26cc7c25917a267";
-    var APIKey2 = "R0H5WG3X5Y1Q2VQMWNSFQKJ5BRLRWQGLM4RJW1VOATNEUP3Z";
-    var clientID = "LAOWDLGTC2JPNIGWRITYXRY0YU4NJR3CLWJVW2WANTBYDZLU";
+    var APIKey2 = "IBUPKROYRJWCPOTELIK0WQFXW2DCLN1YMEHWGCNSA5XVPTGQ";
+    var clientID = "3O31TRU0WECSVYWOAQSD15EVTFPN2NDXUHOLKBHUURF1GEXB";
     
     // Here we are building the URL we need to query the database for OpenWeatherMaps
     var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${userInput},USA${APIKey1}`;
@@ -67,7 +74,7 @@ const runSearch = () => {
         //Everything below is creating the vertical column of results and is not related to the marker or map
         let $row = $("<div>").addClass("row venue");
         let $col = $("<div>").addClass("col-md-12 text-center").attr("id", `venue${i}`);
-        let $name = $("<p>").text(`Venue ${i + 1}: ${venue.name}`);
+        let $name = $("<h4>").text(`Venue ${i + 1}: ${venue.name}`);
         let $location = $("<p>").text(`Location: ${venue.location.address}`);
         let $category = $("<p>").text(`Category: ${venue.categories[0].name}`);
 
@@ -180,6 +187,7 @@ const runSearch = () => {
 
 //When clicking submit this will take our global userInput variable and plug it into our ajax function
 $("#submit").on("click", function() {
+  planeGoFlyFly();
   userInput = $("#cityInput").val().trim(); 
   console.log(userInput);
   //This clears out the search bar on-click
@@ -231,6 +239,8 @@ $("#topPicks").on("click", "#mapView" , function(){
   $("#map").fadeIn("3000");
   $("#jumbo").fadeOut("3000");
   $("#close").fadeIn("3000");
+  $.backstretch("");
+
 });
 // This is the onclick function for the clear button that removes the map and brings back the web app
 //****TODO this button sometimes displays out of view field need to fix */
@@ -238,7 +248,10 @@ $("#close").on("click", function(){
   $("#map").fadeOut("3000");
   $("#jumbo").css("display","block");
   $("#close").fadeOut("3000");
+  $.backstretch("https://images.unsplash.com/photo-1490380169520-0a4b88d52565?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bcf37734e59a40b36cd5ed71da95b206&auto=format&fit=crop&w=2850&q=80");
 });
+
+$.backstretch("https://images.unsplash.com/photo-1490380169520-0a4b88d52565?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bcf37734e59a40b36cd5ed71da95b206&auto=format&fit=crop&w=2850&q=80");
 
 
 
