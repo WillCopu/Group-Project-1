@@ -1,27 +1,37 @@
-#topPicks {
-    background-color: #e9ecef;
-    margin-top: 5%;
- 
-    
+body {
+    font-family: 'Montserrat', sans-serif;
 }
 
+#topPicks {
+    background-color: #e9ecef;
+    margin-top: 15px;
+}
 
 #weatherFore {
     display: none;
+    margin-bottom: 10px;
 }
 
 .descCell {
     height: 75px;
 }
 
-#city-4sq {
-    font-size: 40px;
+.card {
+    text-align: center;
 }
 
-.fa-heart{
+#city-4sq {
+    font-size: 40px;
+    color: rgba(255, 255, 255, 1);
+    margin-top: 10px;
+}
+
+.fa-heart {
     display: inline-block;
     cursor: pointer;
     display: none;
+    margin-top: 10px;
+    margin: auto;
 }
 
 #header {
@@ -32,18 +42,22 @@
 #slogan {
     text-align: center;
 }
+
 #clear:hover {
     background: lightblue;
     color: red;
 }
-.dropdown-item{
+
+.dropdown-item {
     text-transform: capitalize;
 }
+
 .dropdown-item:hover {
     cursor: pointer;
     background-color: aquamarine;
     font-size: 25px;
 }
+
 #weatherFore {
     display: none;
 }
@@ -62,13 +76,24 @@
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
-
 }
 
 .card {
     display: inline-block;
     height: 100%;
     width: 300px;
+    opacity: 0.9;
+    box-shadow: 2px 2px 0px #888888;
+}
+
+#jumbo {
+    opacity: 0.9;
+}
+
+#topPicks {
+    opacity: 0.9;
+    box-shadow: 3px 3px 3px #888888;
+    margin-bottom: 120px
 }
 
 #map {
@@ -77,8 +102,6 @@
     display: none;
     height: fit-content;
     width: fit-content;
-   
-    
 }
 
 #mapView {
@@ -88,4 +111,35 @@
 #close {
     display: none;
     position: absolute;
+}
+
+.jumbotron {
+    padding: 10px;
+    box-shadow: 3px 3px 3px #888888;
+}
+
+.row {
+    margin-bottom: 40px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    /* Set the fixed height of the footer here */
+    line-height: 60px;
+    /* Vertically center the text there */
+    background-color: #16b5ce;
+    text-align: center;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    /* Margin bottom by footer height */
 }
